@@ -1,6 +1,5 @@
-function run(context, game)
+function run(game)
 {
-	context.clearRect(0,0, canvasWidth,canvasHeight )
-	manageGamepad(game);
-	frame++ 
-}    
+	game.ctx.fillStyle = "#FFFFFF";
+	game.ctx.fillRect(0,0,game.canvasWidth,game.canvasHeight);
+}
