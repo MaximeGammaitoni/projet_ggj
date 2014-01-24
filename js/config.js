@@ -1,40 +1,11 @@
-window.onload = function()
+function init(config)
 {
 	images=[];
-	function checkAssetsLoaded()
-	{
-		if (nbImageLoaded==images.lenght)
-		{
-			init()
-		}
-	}
-	var canvas = document.getElementById('canvas');
-	canvasWidth=canvas.width = 1280;      // IMPORTANT !!! Taille a redefinir pour le Cahier des charges.
-	canvasHeight=canvas.height = 768;
-	xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("GET","exemple_a.xml");
-	xmlhttp.responseType = "document";
-	xmlhttp.send();
-	xmlhttp.addEventListener("load", function(e) { 	
-		readFile();
-	} );
-}
-var xmlhttp;
-function readFile(){
-	var spritesNode;
-	spritesNode = xmlhttp.responseXML.getElementsByTagName("sprite");
-//---------------------------------------------game-------------------------------------------------------------
-	var game= {};
-	var game.config = {};
+	var game = {};
+	game.config = config;
 	game.canvasWidth = canvas.width = 1280;
 	game.canvasHeight = canvas.height = 768;
 	game.ctx= document.getElementById("canvas").getContext("2d");
-//--------------------------------------------------------------------------------------------------------------	
-	for (var i = 0; i < spritesNode.length ;i++)
-	{
-		var spriteNode = spritesNode[i];
-		game.config[spriteNode[i].code] = readNode(spriteNode[i])
-	}
 	window.onkeydown = function(event)
 	{
 	    if(event.keyCode==32)// espace 
@@ -97,7 +68,44 @@ function readFile(){
 			game.input.e = 0;
 		}	
 	}
-	init(game);
+}	
+
+
+	//--------------------------------------assignation des touches-----------------------------------
+
+
+window.onload = function()
+{
+	function checkAssetsLoaded()
+	{
+		if (nbImageLoaded==images.lenght)
+		{
+			init()
+		}
+	}
+	var canvas = document.getElementById('canvas');
+	canvasWidth=canvas.width = 1280;      // IMPORTANT !!! Taille a redefinir pour le Cahier des charges.
+	canvasHeight=canvas.height = 768;
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET","xml.xml");
+	xmlhttp.responseType = "document";
+	xmlhttp.send();
+	xmlhttp.addEventListener("load", function(e) { 	
+		readFile();
+	} );
+}
+var xmlhttp;
+function readFile(){
+	var spritesNode;
+	spritesNode = xmlhttp.responseXML.getElementsByTagName("sprite");
+	var config = {};
+	for (var i = 0; i < spritesNode.length ;i++)
+	{
+		var spriteNode = spritesNode[i];
+		config[spriteNode[i].code] = readNode(spriteNode[i]);
+	}
+	
+	init(config);
 }
 
 function readNode(configNode){
