@@ -5,7 +5,7 @@ window.onload = function()
 	{
 		if (nbImageLoaded==images.lenght)
 		{
-			run()
+			init()
 		}
 	}
 	var canvas = document.getElementById('canvas');
@@ -97,7 +97,7 @@ function readFile(){
 			game.input.e = 0;
 		}	
 	}
-	run(game);
+	init(game);
 }
 
 function readNode(configNode){
