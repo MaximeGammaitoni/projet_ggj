@@ -16,6 +16,7 @@ function Game(config,spriteArray){
 	this.input.down = 0;
 	this.input.a = 0;
 	this.input.e = 0;
+	console.log(this.config , this.spriteArray)
 	//Player
 	this.player = new Player(this.config.junki,this.spriteArray.junki,100,100,6);
 	//Assignation des touches

@@ -4,6 +4,7 @@ function Sprite(config,sprite){
 	var that = this;
 	//declaration de l'image du sprite
 	this.image = sprite;
+	this.image.src = sprite.src;
 	//et on configure la source l'image depuis la configuration passe en parametre
 	
 	
