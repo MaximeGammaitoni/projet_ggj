@@ -14,6 +14,7 @@ function Sprite(config,sprite){
 	this.currentFrame = 0;
 	this.currentAnimation = config.animations[0];
 	this.config = config;
+	this.animations= config.animations
 
 	//evenement de lecture du fichier image
 	this.image.onload = function(){
@@ -53,7 +54,7 @@ Sprite.prototype.gardeFrame = function (frame)
 		this.animFrame=2;
 	}
 }
-Sprite.prototype.ChangeAnimation = function(indexAnim){
+Sprite.prototype.changeAnimation = function(indexAnim){
 	if(this.currentAnimation != this.animations[indexAnim]){
 		this.currentAnimation = this.animations[indexAnim];
 		this.currentFrame = 0;
