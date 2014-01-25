@@ -21,10 +21,10 @@ Player.prototype.move=function(game) // pareil pour le saut
 		var previewY = this.y;
 	}
 	//COLLISION
-	if(!this.collisionCanvas(previewX,game.canvasWidth)){
+	if(!this.collisionCanvas(previewX,game.canvasWidth,this.frameWidth)){
 		this.x = previewX;
 	}
-	if(!this.collisionCanvas(previewY,game.canvasHeight)){
+	if(!this.collisionCanvas(previewY,game.canvasHeight,this.frameHeight)){
 		this.y = previewY;
 	}
 	//
@@ -43,9 +43,9 @@ Player.prototype.move=function(game) // pareil pour le saut
 		this.stateMove = false;
 	}
 }
-Player.prototype.collisionCanvas = function(preview,canvas){
+Player.prototype.collisionCanvas = function(preview,canvas,offSet){
 	if( preview < 0 ||
-		preview > canvas){
+		preview+offSet > canvas){
 			return true;
 	}
 	else{
