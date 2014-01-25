@@ -4,51 +4,50 @@ function Player(config,sprite,x,y,speed) // ne pas oublier de definir speed dans
 	this.x= x;
 	this.y= y;
 	this.speed = speed;
+	this.jumpSize = 6;
 	this.stateMove = false;  	
 	console.log(this)
 }
 Player.prototype = Object.create(Sprite.prototype);
 Player.prototype.constructor = Player;
-Player.prototype.move=function(game,jumpSize) // pareil pour le saut
+Player.prototype.move=function(game) // pareil pour le saut
 {
-	this.x += (game.input.right - game.input.left) * this.speed;
-	if(game.input.up)
-	{
-
-	 	this.y -= jumpSize ;
+	//CHANGEMENT TIM
+	var previewX = this.x + (game.input.right - game.input.left)*this.speed;
+	if(game.input.up){
+		var previewY = this.y - this.jumpSize;
 	}
+	else{
+		var previewY = this.y;
+	}
+	if(!this.collisionCanvas(previewX,previewY,game)){
+		this.x = previewX;
+		this.y = previewY;
+	}
+	//
 	if(game.input.right)
 	{
 		this.stateMove = true;  
 		this.changeAnimation(1);
 	}
-	if(game.input.left)
+	else if(game.input.left)
 	{
 		this.stateMove = true;
 		this.changeAnimation(0);
 	}
-	if(this.x < 0 )
+	else	
 	{
-		this.x = 0 ;
+		this.stateMove = false;
 	}
-	if(this.x > game.canvasWidth - game.player.frameWidth)
-	{
-		this.x=game.canvasWidth -  game.player.frameWidth;
+}
+Player.prototype.collisionCanvas = function(previewX,previewY,game){
+	if(previewX < 0||
+		previewX > game.canvasWidth ||
+		previewY < 0 ||
+		previewY > game.canvasHeight){
+		return true;
 	}
-	if(this.y < 0 )
-	{
-		this.y  = 0 ;
+	else{
+		return false;
 	}
-	if(this.y >game.canvasHeight- game.player.frameHeight)
-	{
-		this.y  = game.canvasHeight-game.player.frameHeight;
-	}
-	if(!game.input.right && !game.input.left )	
-	{
-		this.stateMove=false;
-	}
-
-
-
-
 }

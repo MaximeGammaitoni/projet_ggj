@@ -7,5 +7,5 @@ function run(game)
 	
 	//On draw le player
 	game.player.draw(game.ctx);
-	game.player.move(game,6);
+	game.player.move(game);
 }
