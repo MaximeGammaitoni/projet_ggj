@@ -13,7 +13,7 @@ Player.prototype.move=function(game,jumpSize) // pareil pour le saut
 	this.x += (game.input.right - game.input.left) * this.speed;
 	if(game.input.up)
 	{
-	 	this.y += jumpSize ;
+	 	this.y -= jumpSize ;
 	}
 	if(game.input.right)
 	{
