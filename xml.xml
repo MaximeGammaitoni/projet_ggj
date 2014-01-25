@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <sprites>
-	<sprite code="" name="images/source.png" nbFrameMax="6" nbRows="5">
+	<sprite code="junki" name="images/junki.png" nbFrameMax="4" nbRows="2">
 		<animations>
-			<animation code="idle" nbFrame="1" nbRow="0" FPS="25" cycle="-1" />
-			<animation code="bas" nbFrame="1" nbRow="2" fps="25" cycle="-1"/>
-			<animation code="haut" nbFrame="1" nbRow="1" fps="25" cycle="-1"/>
-			<animation code="shoot" nbFrame="2" nbRow="4" fps="2" cycle="1" />
-		</animations>
-		<hitboxs>
-		<hitbox offsetX="30" offsetY="20" diam="20"/> 
-		</hitboxs>
-	</sprite>
-	<sprite code="" name="images/source2.png" nbFrameMax="6" nbRows="5">
-		<animations>
-			<animation code="idle" nbFrame="1" nbRow="0" FPS="25" cycle="-1" />
-			<animation code="bas" nbFrame="1" nbRow="2" fps="25" cycle="-1"/>
-			<animation code="haut" nbFrame="1" nbRow="1" fps="25" cycle="-1"/>
-			<animation code="shoot" nbFrame="2" nbRow="4" fps="2" cycle="1" />
+			<animation code="left" nbFrame="1" nbRow="0" FPS="25" cycle="-1" />
+			<animation code="right" nbFrame="1" nbRow="1" fps="25" cycle="-1"/>
 		</animations>
 		<hitboxs>
 		<hitbox offsetX="30" offsetY="20" diam="20"/> 
