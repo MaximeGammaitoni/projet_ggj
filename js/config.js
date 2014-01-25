@@ -1,3 +1,58 @@
+var xmlhttp;
+window.onload = function()
+{
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET","xml.xml");
+	xmlhttp.responseType = "document";
+	xmlhttp.send();
+	xmlhttp.addEventListener("load", function(e) { 	
+		readFile();
+	} );
+}
+function readFile(){
+	var spritesNode;
+	spritesNode = xmlhttp.responseXML.getElementsByTagName("sprite");
+	var config = {};
+	for (var i = 0; i < spritesNode.length ;i++)
+	{
+		var spriteNode = spritesNode[i];
+		var name = spriteNode.getAttribute("code");
+		config[name] = readNode(spriteNode[i]);
+	}
+	init(config);
+}
+function readNode(configNode){
+	var config = {};
+	config.code = configNode.getAttribute("code");
+	config.nbFrameMax = configNode.getAttribute("nbFrameMax");
+	config.nbRows = configNode.getAttribute("nbRows");
+	config.name = configNode.getAttribute("name");
+	var animationNodes = configNode.getElementsByTagName("animation")
+	config.animations = [];
+	for (var i = 0 ; i < animationNodes.length ; i++){
+		
+		var anim = {};
+		
+		anim.code = animationNodes[i].getAttribute("code");
+		anim.nbFrame = animationNodes[i].getAttribute("nbFrame");
+		anim.nbRow = animationNodes[i].getAttribute("nbRow");
+		anim.fps = animationNodes[i].getAttribute("FPS");
+		anim.cycle = animationNodes[i].getAttribute("cycle");
+		
+		config.animations.push(anim);
+	}
+	var hitboxNodes = configNode.getElementsByTagName("hitbox")
+	config.hitboxs = [];
+	for (var i = 0; i < hitboxNodes.length ;i++){
+		var hitbox = {};
+		hitbox.offsetX = parseInt(hitboxNodes[i].getAttribute("offsetX"));
+		hitbox.offsetY = parseInt(hitboxNodes[i].getAttribute("offsetY"));
+		hitbox.diam = parseInt(hitboxNodes[i].getAttribute("diam"));
+		
+		config.hitboxs.push(hitbox);
+	}
+	return config;
+}
 function init(config)
 {
 	images=[];
@@ -6,6 +61,8 @@ function init(config)
 	game.canvasWidth = canvas.width = 1280;
 	game.canvasHeight = canvas.height = 768;
 	game.ctx= document.getElementById("canvas").getContext("2d");
+	game.input = {};
+	//--------------------------------------assignation des touches-----------------------------------
 	window.onkeydown = function(event)
 	{
 	    if(event.keyCode==32)// espace 
@@ -22,11 +79,11 @@ function init(config)
 		}
 		if ( event.keyCode==39 ) // Droite
 		{
-			game.input.space = 1;
+			game.input.right = 1;
 		}
 		if ( event.keyCode==40) // Bas
 		{
-			game.input.space = 1;
+			game.input.down = 1;
 		}	
 		if (event.keyCode==65)
 		{
@@ -68,81 +125,4 @@ function init(config)
 			game.input.e = 0;
 		}	
 	}
-}	
-
-
-	//--------------------------------------assignation des touches-----------------------------------
-
-
-window.onload = function()
-{
-	function checkAssetsLoaded()
-	{
-		if (nbImageLoaded==images.lenght)
-		{
-			init()
-		}
-	}
-	var canvas = document.getElementById('canvas');
-	canvasWidth=canvas.width = 1280;      // IMPORTANT !!! Taille a redefinir pour le Cahier des charges.
-	canvasHeight=canvas.height = 768;
-	xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("GET","xml.xml");
-	xmlhttp.responseType = "document";
-	xmlhttp.send();
-	xmlhttp.addEventListener("load", function(e) { 	
-		readFile();
-	} );
-}
-var xmlhttp;
-function readFile(){
-	var spritesNode;
-	spritesNode = xmlhttp.responseXML.getElementsByTagName("sprite");
-	var config = {};
-	for (var i = 0; i < spritesNode.length ;i++)
-	{
-		var spriteNode = spritesNode[i];
-		config[spriteNode[i].code] = readNode(spriteNode[i]);
-	}
-	
-	init(config);
-}
-
-function readNode(configNode){
-
-	var config = {};
-
-	config.code = configNode.getAttribute("code");
-	config.nbFrameMax = configNode.getAttribute("nbFrameMax");
-	config.nbRows = configNode.getAttribute("nbRows");
-	config.name = configNode.getAttribute("name");
-
-	var animationNodes = configNode.getElementsByTagName("animation")
-
-	config.animations = [];
-	
-	for (var i = 0 ; i < animationNodes.length ; i++){
-		
-		var anim = {};
-		
-		anim.code = animationNodes[i].getAttribute("code");
-		anim.nbFrame = animationNodes[i].getAttribute("nbFrame");
-		anim.nbRow = animationNodes[i].getAttribute("nbRow");
-		anim.fps = animationNodes[i].getAttribute("FPS");
-		anim.cycle = animationNodes[i].getAttribute("cycle");
-		
-		config.animations.push(anim);
-	}
-	var hitboxNodes = configNode.getElementsByTagName("hitbox")
-	
-	config.hitboxs = [];
-	for (var i = 0; i < hitboxNodes.length ;i++){
-		var hitbox = {};
-		hitbox.offsetX = parseInt(hitboxNodes[i].getAttribute("offsetX"));
-		hitbox.offsetY = parseInt(hitboxNodes[i].getAttribute("offsetY"));
-		hitbox.diam = parseInt(hitboxNodes[i].getAttribute("diam"));
-		
-		config.hitboxs.push(hitbox);
-	}
-	return config;
 }
