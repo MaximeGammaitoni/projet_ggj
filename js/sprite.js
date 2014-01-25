@@ -1,11 +1,11 @@
 //classe mere de tous les sprites que l'on peut dessiner
-function Sprite(config){
+function Sprite(config,sprite){
 	//recopie de l'objet pour pouvoir y acceder de partout
 	var that = this;
 	//declaration de l'image du sprite
-	this.image = new Image();
+	this.image = sprite;
 	//et on configure la source l'image depuis la configuration passe en parametre
-	this.image.src = config.name;
+	
 	
 	//on va declarer des coordonnes
 	this.x = 10;
