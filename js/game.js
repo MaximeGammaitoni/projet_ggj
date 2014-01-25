@@ -4,8 +4,8 @@ function Game(config,spriteArray){
 	this.spriteArray = spriteArray;
 	//Canvas + Context
 	this.canvas = document.getElementById("canvas");
-	this.canvasWidth = this.canvas.width;
-	this.canvasHeight = this.canvas.height;
+	this.canvasWidth = this.canvas.width = 1280;
+	this.canvasHeight = this.canvas.height = 768;
 	this.ctx = this.canvas.getContext("2d");
 	//Inputs
 	this.input = {};
