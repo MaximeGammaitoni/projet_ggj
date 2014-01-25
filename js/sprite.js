@@ -6,8 +6,6 @@ function Sprite(config,sprite){
 	this.image = sprite;
 	this.image.src = sprite.src;
 	//et on configure la source l'image depuis la configuration passe en parametre
-	
-	
 	//on va declarer des coordonnes
 	this.x = 10;
 	this.y = 10;
@@ -48,28 +46,16 @@ Sprite.prototype.draw = function(context){
 		this.frameWidth, this.frameHeight,
 		this.x, this.y , this.frameWidth, this.frameHeight);
 }
-Sprite.prototype.changeAnimation = function (indexAnim)
-{
-	this.currentAnimation = this.config.animations[indexAnim];
-	this.currentFrame = 0;
-}
-Sprite.prototype.changeAnimation1 = function (indexAnim)
-{
-	this.currentAnimation = this.config.animations[indexAnim];
-	
-}
 Sprite.prototype.gardeFrame = function (frame)
 {
 	if(this.currentFrame==2 )
 	{       
-			this.animFrame=2;
-			
-
+		this.animFrame=2;
 	}
-	
 }
-
-
-
-
-
+Sprite.prototype.ChangeAnimation = function(indexAnim){
+	if(this.currentAnimation != this.animations[indexAnim]){
+		this.currentAnimation = this.animations[indexAnim];
+		this.currentFrame = 0;
+	}
+}
