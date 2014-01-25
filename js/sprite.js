@@ -6,8 +6,6 @@ function Sprite(config,sprite){
 	this.image = sprite;
 	this.image.src = sprite.src;
 	//et on configure la source l'image depuis la configuration passe en parametre
-	
-	
 	//on va declarer des coordonnes
 	this.x = 10;
 	this.y = 10;
