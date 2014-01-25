@@ -48,11 +48,6 @@ Sprite.prototype.draw = function(context){
 		this.frameWidth, this.frameHeight,
 		this.x, this.y , this.frameWidth, this.frameHeight);
 }
-Sprite.prototype.changeAnimation = function (indexAnim)
-{
-	this.currentAnimation = this.config.animations[indexAnim];
-	this.currentFrame = 0;
-}
 Sprite.prototype.changeAnimation1 = function (indexAnim)
 {
 	this.currentAnimation = this.config.animations[indexAnim];
@@ -66,10 +61,10 @@ Sprite.prototype.gardeFrame = function (frame)
 			
 
 	}
-	
 }
-
-
-
-
-
+Sprite.prototype.ChangeAnimation = function(indexAnim){
+	if(this.currentAnimation != this.animations[indexAnim]){
+		this.currentAnimation = this.animations[indexAnim];
+		this.currentFrame = 0;
+	}
+}
