@@ -1,14 +1,13 @@
-function Player(config,x,y,speed) // ne pas oublier de definir speed dans le push de Player
+function Player(config,sprite,x,y,speed) // ne pas oublier de definir speed dans le push de Player
 {
-	Sprite.call(this,config,);
+	Sprite.call(this,config,sprite);
 	this.x= x;
 	this.y= y;
-	this.speed = speed;
-	
+	this.speed = speed;	
 }
 Player.prototype = Object.create(Sprite.prototype);
 Player.prototype.constructor = Player;
-player.prototype.move=function(jumpSize) // pareil pour le saut
+Player.prototype.move=function(jumpSize) // pareil pour le saut
 {
 	this.x += (game.input.right - game.input.left) * this.speed;
 	if(game.input.up)
