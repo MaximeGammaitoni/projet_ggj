@@ -65,5 +65,68 @@ function init(config,spriteArray)
 	loader.spriteLength = 0;	//Nombre de sprite à charger
 	loader.spriteLoaded = 0;	//Nombre de sprite total
 	var game = new Game(config,spriteArray);
+	window.onkeydown = function(event)
+	{
+	    if(event.keyCode==32)// espace 
+	    {    
+			game.input.space = 1;
+		}
+		if ( event.keyCode==37) // Gauche
+		{
+			game.input.left = 1;
+		}
+		if ( event.keyCode==38 ) // Haut
+		{
+			game.input.up = 1;
+		}
+		if ( event.keyCode==39 ) // Droite
+		{
+			game.input.right = 1;
+		}
+		if ( event.keyCode==40) // Bas
+		{
+			game.input.down = 1;
+		}	
+		if (event.keyCode==65)
+		{
+			game.input.a = 1;
+		}	
+		if (event.keyCode==69)
+		{
+			game.input.e = 1;
+		}
+	}
+	window.onkeyup = function(event)
+	{ 
+		if(event.keyCode==32)// espace 
+		{  		 
+			game.input.space = 0;
+		} 		
+		if ( event.keyCode==37 ) // Gauche
+		{
+			game.input.left = 0;
+		}
+		if ( event.keyCode==38 ) // Haut
+		{
+			game.input.up = 0;
+		}
+		if ( event.keyCode==39 ) // Droite
+		{		
+			game.input.right = 0;
+		}
+		if ( event.keyCode==40) // Bas
+		{
+			game.input.down = 0;
+		}
+		if (event.keyCode==65)	//A
+		{ 
+			game.input.a = 0;
+		}
+		if (event.keyCode==69)	//E
+		{
+			game.input.e = 0;
+		}	
+	}
+
 	run(game);
 }

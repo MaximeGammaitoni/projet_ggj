@@ -4,10 +4,11 @@ function Player(config,sprite,x,y,speed) // ne pas oublier de definir speed dans
 	this.x= x;
 	this.y= y;
 	this.speed = speed;	
+	console.log(this)
 }
 Player.prototype = Object.create(Sprite.prototype);
 Player.prototype.constructor = Player;
-Player.prototype.move=function(jumpSize) // pareil pour le saut
+Player.prototype.move=function(game,jumpSize) // pareil pour le saut
 {
 	this.x += (game.input.right - game.input.left) * this.speed;
 	if(game.input.up)
@@ -16,10 +17,10 @@ Player.prototype.move=function(jumpSize) // pareil pour le saut
 	}
 	if(game.input.right)
 	{
-		this.changeAnimation(1);
+		this.changeAnimation1(1);
 	}
 	if(game.input.left)
 	{
-		this.changeAnimation(0);
+		this.changeAnimation1(0);
 	}
 }

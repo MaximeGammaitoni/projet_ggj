@@ -59,7 +59,7 @@ Sprite.prototype.changeAnimation1 = function (indexAnim)
 	
 }
 Sprite.prototype.gardeFrame = function (frame)
-{console.log(moveSpacecraft.useShield)
+{
 	if(this.currentFrame==2 )
 	{       
 			this.animFrame=2;
