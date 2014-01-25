@@ -17,10 +17,27 @@ Player.prototype.move=function(game,jumpSize) // pareil pour le saut
 	}
 	if(game.input.right)
 	{
-		this.changeAnimation1(1);
+		this.changeAnimation(1);
 	}
 	if(game.input.left)
 	{
-		this.changeAnimation1(0);
+		this.changeAnimation(0);
 	}
+	if(this.x < 0 )
+	{
+		this.x = 0 ;
+	}
+	if(this.x > game.canvasWidth - game.player.frameWidth)
+	{
+		this.x=game.canvasWidth -  game.player.frameWidth;
+	}
+	if(this.y < 0 )
+	{
+		this.y  = 0 ;
+	}
+	if(this.y >game.canvasHeight- game.player.frameHeight)
+	{
+		this.y  = game.canvasHeight-game.player.frameHeight;
+	}		
+
 }
