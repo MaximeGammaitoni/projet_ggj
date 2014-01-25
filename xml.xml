@@ -9,5 +9,13 @@
 		<hitbox offsetX="30" offsetY="20" diam="20"/> 
 		</hitboxs>
 	</sprite>
+	<sprite code="box" name="images/box.png" nbFrameMax="1" nbRows="1">
+		<animations>
+			<animation code="idle" nbFrame="1" nbRow="0" FPS="10" cycle="-1" />
+		</animations>
+		<hitboxs>
+		<hitbox offsetX="0" offsetY="0" width="32" height="32"/> 
+		</hitboxs>
+	</sprite>
 </sprites>
 
