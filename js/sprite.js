@@ -6,6 +6,8 @@ function Sprite(config,sprite){
 	this.image = sprite;
 	this.image.src = sprite.src;
 	//et on configure la source l'image depuis la configuration passe en parametre
+	
+	
 	//on va declarer des coordonnes
 	this.x = 10;
 	this.y = 10;
@@ -30,13 +32,14 @@ Sprite.prototype.draw = function(context){
 		this.currentFrame++;
 		if (this.currentFrame == this.currentAnimation.nbFrame)
 		{
-			if(!this.alive){
-				//Kill Item
-			}
+			if (this.statut === "mort")
+			{
+                this.statut ="jemesupprime";
+            }
             else
             {
             	this.currentFrame = 0;
-            }
+            }		
         }
 	}
 	context.drawImage(this.image,
