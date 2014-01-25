@@ -26,7 +26,7 @@ Sprite.prototype.draw = function(context){
 	//on incremente le compteur de frame 
 	this.animFrame++;
 	//on calcule si on doit change de frame d'animation
-	if (this.animFrame % Math.floor(60 / this.currentAnimation.fps) == 0){
+	if (this.animFrame % Math.floor(60 / this.currentAnimation.fps) == 0 && this.stateMove){
 		this.currentFrame++;
 		if (this.currentFrame == this.currentAnimation.nbFrame)
 		{
