@@ -3,7 +3,7 @@
 	<sprite code="junki" name="images/junki.png" nbFrameMax="4" nbRows="2">
 		<animations>
 			<animation code="left" nbFrame="4" nbRow="0" FPS="10" cycle="-1" />
-			<animation code="right" nbFrame="4" nbRow="1" fps="10" cycle="-1"/>
+			<animation code="right" nbFrame="4" nbRow="1" FPS="10" cycle="-1"/>
 		</animations>
 		<hitboxs>
 		<hitbox offsetX="30" offsetY="20" diam="20"/> 
