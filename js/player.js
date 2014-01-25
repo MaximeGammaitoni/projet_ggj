@@ -20,8 +20,11 @@ Player.prototype.move=function(game) // pareil pour le saut
 	else{
 		var previewY = this.y;
 	}
-	if(!this.collisionCanvas(previewX,previewY,game)){
+	//COLLISION
+	if(!this.collisionCanvas(previewX,game.canvasWidth)){
 		this.x = previewX;
+	}
+	if(!this.collisionCanvas(previewY,game.canvasHeight)){
 		this.y = previewY;
 	}
 	//
@@ -40,12 +43,10 @@ Player.prototype.move=function(game) // pareil pour le saut
 		this.stateMove = false;
 	}
 }
-Player.prototype.collisionCanvas = function(previewX,previewY,game){
-	if(previewX < 0||
-		previewX > game.canvasWidth ||
-		previewY < 0 ||
-		previewY > game.canvasHeight){
-		return true;
+Player.prototype.collisionCanvas = function(preview,canvas){
+	if( preview < 0 ||
+		preview > canvas){
+			return true;
 	}
 	else{
 		return false;
