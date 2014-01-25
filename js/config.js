@@ -20,7 +20,7 @@ function readFile(){
 	{
 		var spriteNode = spritesNode[i];
 		var name = spriteNode.getAttribute("code");
-		config[name] = readNode(spriteNode[i]);
+		config[name] = readNode(spriteNode);
 		spriteArray[name] = new Image();
 		spriteArray[name].src = config[name].name;
 	}
